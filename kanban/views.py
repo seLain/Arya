@@ -11,3 +11,12 @@ def index(request):
 	all_projects = Project.objects.all()
 
 	return render(request, 'kanban/index.html', {'projects': all_projects})
+
+def project_page(request):
+
+	project_id = request.GET.get('id')
+	project = Project.objects.get(id=project_id)
+
+	tasks = Task.objects.filter(project=project)
+
+	return render(request, 'kanban/project.html', {'project': project, 'tasks': tasks})
