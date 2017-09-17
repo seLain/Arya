@@ -13,6 +13,9 @@ class Project(models.Model):
 	#
 	create_date = models.DateTimeField(default=datetime.datetime.now)
 
+	def __str__(self):
+		return self.title
+
 class Task(models.Model):
 	# 
 	title = models.CharField(max_length=128)
@@ -23,3 +26,6 @@ class Task(models.Model):
 	creator = models.ForeignKey(settings.AUTH_USER_MODEL)
 	create_date = models.DateTimeField(default=datetime.datetime.now)
 	lastupate_date = models.DateTimeField(default=datetime.datetime.now)
+
+	def __str__(self):
+		return self.title
