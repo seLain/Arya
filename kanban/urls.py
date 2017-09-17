@@ -19,7 +19,5 @@ from django.contrib import admin
 from .views import index
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$',index),
-    url(r'^kanban/', include('kanban.urls')),
+    url(r'^$', index),
 ]

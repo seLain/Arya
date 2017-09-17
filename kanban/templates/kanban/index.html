@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Arya</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'kanban/css/kanban.css' %}"/>
+        <!-- for boostrap responsive page -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="col-xs-12">
+                <h2>All the tasks we have for now:<h2>
+                {% for task_title in tasks %}
+                    <h3>{{ task_title }}</h3>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
