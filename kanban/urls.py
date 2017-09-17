@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from .views import index, project_page
+from .views import index, project_page, task_page
 
 urlpatterns = [
     url(r'^$', index),
     url(r'^project$', project_page),
+    url(r'^task$', task_page),
 ]

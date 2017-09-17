@@ -1,0 +1,32 @@
+{% extends 'kanban/base.html' %}
+
+{% load static %}
+
+{% block css_content %}
+<link rel="stylesheet" type="text/css" href="{% static 'kanban/css/kanban.css' %}"/>
+{% endblock %}
+
+{% block page_content %}
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading -->
+  <h2 class="my-4"><small>task</small> {{ task.title }}</h2>
+  <div class="row">
+      <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+          <div class="card-body">
+            <form method="POST" class="task-form">{% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="save btn btn-default">Save</button>
+            </form>
+          </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+<!-- /.container -->
+
+{% endblock %}
