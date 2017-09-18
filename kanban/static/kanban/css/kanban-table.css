@@ -1,0 +1,153 @@
+.kanban-table {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+	margin: 5px 0px 20px 0px;
+}
+
+.kanban-table.zoom-0 .task-column,
+  .kanban-table.zoom-0 .task-colum-name {
+	max-width: 148px;
+}
+
+.kanban-table.zoom-0 .task-colum-name span {
+	padding-right: 1rem;
+}
+
+.kanban-table .vfold tg-card {
+	display: none;
+}
+
+.kanban-table .vfold.task-colum-name {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	opacity: .8;
+	padding: .5rem 0;
+	transition: opacity .3s linear;
+}
+
+.kanban-table .vfold.task-colum-name .option:not(.hunfold),
+    .kanban-table .vfold.task-colum-name span {
+	display: none;
+}
+
+.kanban-table .vfold.task-colum-name .hunfold {
+	margin: 0;
+}
+
+.kanban-table .vfold.task-colum-name, .kanban-table .vfold.task-column {
+	flex-flow: 1;
+	max-width: 30px;
+	min-height: 2.5rem;
+	min-width: 30px;
+	width: 30px;
+}
+
+.kanban-table .vfold .kanban-column-intro {
+	display: none;
+}
+
+.kanban-table .readonly {
+	cursor: auto;
+}
+
+.kanban-table-header {
+	flex-basis: 2.4rem;
+	min-height: 2.4rem;
+	position: relative;
+}
+
+.kanban-table-header .kanban-table-inner {
+	display: flex;
+	overflow: hidden;
+	position: absolute;
+	width: 100%;
+}
+
+.kanban-table-header .options {
+	display: flex;
+}
+
+.kanban-table-header .task-colum-name {
+	align-items: center;
+	background: white;
+	border-top: 3px solid gray;
+	color: gray;
+	display: flex;
+	flex-basis: 296px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	justify-content: space-between;
+	margin: 0 5px 0 0;
+	max-width: 296px;
+	padding: 0.5rem 1rem;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.kanban-table-header .task-colum-name:last-child {
+	margin-right: 0;
+}
+
+.kanban-table-header .task-colum-name .option {
+	margin-right: .3rem;
+}
+
+.kanban-table-header .task-colum-name .icon {
+	fill: gray;
+	height: 1rem;
+	transition: color .2s linear;
+	width: 1rem;
+}
+
+.kanban-table-body {
+	display: flex;
+	height: 100%;
+	overflow: hidden;
+	overflow-x: auto;
+	width: 100%;
+}
+
+.kanban-table-body .task-column {
+	flex-basis: 296px;
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin: 0 5px 0 0;
+	max-width: 296px;
+	overflow-y: auto;
+	widows: 296px;
+	width: 296px;
+}
+
+.kanban-table-body .task-column:last-child {
+	margin-right: 0;
+}
+
+.kanban-table-body .task-column .kanban-column-intro {
+	color: gray;
+	margin: 1rem 2rem;
+}
+
+.kanban-table-body .task-column .kanban-column-intro.active {
+	color: black;
+}
+
+.kanban-table-body .task-column .kanban-wip-limit {
+	background: red;
+	border-radius: 2px;
+	height: 4px;
+	margin: .5rem 0;
+	padding: 0;
+}
+
+.kanban-table-body .kanban-uses-box {
+	background: white;
+}
+
+.kanban-table-inner {
+	display: flex;
+	flex-wrap: nowrap;
+}
