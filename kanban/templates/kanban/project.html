@@ -13,11 +13,27 @@
 <div class="container">
 
   <!-- Page Heading -->
-  <h2 class="my-4"><small>project::</small> {{ project.title }}</h2>
+  <div class="row">
+    <div class="col-sm-3">
+      <h2 class="my-4"><small>project::</small> {{ project.title }}</h2>
+    </div>
+    <div class="col-9">
+      <form method="post" id="command-form" class="my-4">
+          {% csrf_token %}
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Enter Command" name="commandText" id="commandText" autofocus/>
+              <input type="hidden" name="projectID" value="{{ project.id }}">
+              <span class="input-group-btn">
+                  <button class="btn btn-info" type="button" id="command-form-btn">SEND <span class="glyphicon glyphicon-hand-up"></span></button>
+              </span>
+          </div>
+      </form>
+    </div>
+  </div>
 
   <div class="row">
     <div class="kanban-table">
-      <div class="kanban-table-body">
+      <div class="kanban-table-body" id="kanban-table-body">
       {% for stage in stages %}
         <div class="col-lg-3 col-sm-6 portfolio-item task-column">
           <h4 class="card-title text-center">{{ stage.title }}</h4>
@@ -44,5 +60,40 @@
 
 </div>
 <!-- /.container -->
+
+{% endblock %}
+
+{% block javascript_content %}
+
+<script>
+$(function() {
+    $('#command-form-btn').click(function(e) {
+        e.preventDefault();
+        $('#command-form').submit();
+    });
+
+    $('#command-form').submit(function(e) {
+        e.preventDefault();
+        var command = $('#commandText').val();
+        $.ajax({
+            type: "POST",
+            url: "/kanban/command",
+            data: $(this).serialize(),
+            success: function(response) {
+                $('#commandText').val('');  // empty the command field
+                var stage_title = response.stage_title;
+                // add new stage to kanban without reload
+                $(".kanban-table-body").append(
+                    '<div class="col-lg-3 col-sm-6 portfolio-item task-column">' +
+                    '<h4 class="card-title text-center">' + stage_title + '</h4>' + 
+                    '</div>');
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+</script>
 
 {% endblock %}
