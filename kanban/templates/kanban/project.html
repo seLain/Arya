@@ -15,20 +15,26 @@
   <h2 class="my-4"><small>project::</small> {{ project.title }}</h2>
 
   <div class="row">
-    {% for task in tasks %}
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <!-- <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="/kanban/task?id={{task.id}}">{{ task.title }}</a>
-            </h4>
-            <p class="card-text">{{ task.description }}</p>
+    {% for stage in stages %}
+      <div class="col-lg-3 col-sm-6 portfolio-item">
+        <h4 class="card-title text-center">{{ stage.title }}</h4>
+        {% for task in stage.tasks %}
+          <div class="portfolio-item">
+            <div class="card h-100">
+              <!-- <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="/kanban/task?id={{task.id}}">{{ task.title }}</a>
+                </h5>
+                <p class="card-text">{{ task.description }}</p>
+              </div>
+            </div>
           </div>
-        </div>
+        {% endfor %}
       </div>
     {% endfor %}
   </div>
+
   <!-- /.row -->
 
 </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
-from .models import Project, Task
+from .models import Project, Stage, Task
 from .forms import TaskForm
 
 # Create your views here.
@@ -18,9 +18,12 @@ def project_page(request):
 	project_id = request.GET.get('id')
 	project = Project.objects.get(id=project_id)
 
-	tasks = Task.objects.filter(project=project)
+	stages = Stage.objects.filter(project=project).order_by('order')
+	for stage in stages:
+		stage.tasks = Task.objects.filter(project=stage.project, stage=stage)
 
-	return render(request, 'kanban/project.html', {'project': project, 'tasks': tasks})
+	return render(request, 'kanban/project.html', 
+				  {'project': project, 'stages': stages})
 
 def task_page(request):
 
