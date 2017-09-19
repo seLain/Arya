@@ -81,7 +81,7 @@ $(function() {
             data: $(this).serialize(),
             success: function(response) {
                 $('#commandText').val('');  // empty the command field
-                var stage_title = response.stage_title;
+                var stage_title = response.create_stage.stage_title;
                 // add new stage to kanban without reload
                 $(".kanban-table-body").append(
                     '<div class="col-lg-3 col-sm-6 portfolio-item task-column">' +
