@@ -84,7 +84,7 @@ $(function() {
                 if(response.hasOwnProperty('create_stage')){
                   var stage_title = response.create_stage.stage_title;
                   // add new stage to kanban without reload
-                  $(".kanban-table-body").append(
+                  $("#kanban-table-body").append(
                       '<div class="col-lg-3 col-sm-6 portfolio-item task-column" id="' + 
                       stage_title + '">' +
                       '<h4 class="card-title text-center">' + stage_title + '</h4>' + 
