@@ -17,6 +17,7 @@ def create_stage(message, stage_name):
 												 order=largest_order+1)
 	if created:
 		response['update'] = True
+		response['event'] = 'create_stage'
 		response['stage_title'] = stage.title
 
 	return response
