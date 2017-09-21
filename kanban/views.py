@@ -43,7 +43,8 @@ def task_page(request):
 def command(request):
 
 	command = {'text': request.POST['commandText'],
-			   'project_id': request.POST['projectID']}
+			   'project_id': request.POST['projectID'],
+			   'user': request.user}
 	# delegate command processing to bot
 	bot = Bot()
 	responses = bot.take_command(command)
