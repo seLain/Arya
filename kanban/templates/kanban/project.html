@@ -38,12 +38,14 @@
         <div class="col-lg-3 col-sm-6 portfolio-item task-column" id='{{ stage.title }}'>
           <h4 class="card-title text-center">{{ stage.title }}</h4>
           {% for task in stage.tasks %}
-            <div class="portfolio-item">
+            <div class="portfolio-item" id='{{ task.id }}'>
               <div class="card h-100">
                 <!-- <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
                 <div class="card-body">
                   <h5 class="card-title">
-                    <a href="/kanban/task?id={{task.id}}">{{ task.title }}</a>
+                    <a href="/kanban/task?id={{task.id}}">{{ task.title }}
+                      <small>#{{ task.id }}</small>
+                    </a>
                   </h5>
                   <p class="card-text">{{ task.description }}</p>
                 </div>
@@ -101,13 +103,19 @@ $(function() {
                   var task_title = response.create_task.task_title;
                   var task_id = response.create_task.task_id;
                   $("#"+stage_title).append(
-                    '<div class="portfolio-item">' + 
+                    '<div class="portfolio-item" id="' + task_id + '">' + 
                     '<div class="card h-100">' +
                     '<div class="card-body">' + 
                     '<h5 class="card-title">' + 
-                    '<a href="/kanban/task?id=' + task_id +'">' + task_title + '</a></h5>' +
+                    '<a href="/kanban/task?id=' + task_id +'">' + task_title + 
+                    '<small>#' + task_id + '</small></a></h5>' +
                     '<p class="card-text">None</p></div></div></div>');
 
+                }
+                if(response.hasOwnProperty('delete_task')){
+                  // remove stage from kanban without reload
+                  var task_id = "#" + response.delete_task.task_id;
+                  $(task_id).remove();
                 }
             },
             error: function(error) {
