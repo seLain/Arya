@@ -6,10 +6,10 @@ from ..bot import respond_to
 from kanban.models import Project, Stage
 
 @respond_to('delete stage (.*)', re.IGNORECASE)
-def delete_stage(message, stage_name):
+def delete_stage(command, stage_name):
 
 	response = {'update': False}
-	project_id = message.body['project_id']
+	project_id = command.body['project_id']
 	project = Project.objects.get(id=project_id)
 	num, dict_del_type_num = Stage.objects.get(title=stage_name, project=project).delete()
 

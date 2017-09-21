@@ -6,10 +6,10 @@ from ..bot import respond_to
 from kanban.models import Project, Stage
 
 @respond_to('create stage (.*)', re.IGNORECASE)
-def create_stage(message, stage_name):
+def create_stage(command, stage_name):
 
 	response = {'update': False}
-	project_id = message.body['project_id']
+	project_id = command.body['project_id']
 	project = Project.objects.get(id=project_id)
 	largest_order = Stage.objects.filter(project=project).order_by('-order')[0].order
 	stage, created = Stage.objects.get_or_create(title=stage_name, 

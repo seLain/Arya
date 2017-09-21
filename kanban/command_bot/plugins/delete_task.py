@@ -6,7 +6,7 @@ from ..bot import respond_to
 from kanban.models import Project, Stage, Task
 
 @respond_to('delete task id=#(.*)', re.IGNORECASE)
-def delete_task(message, task_id):
+def delete_task(command, task_id):
 
 	response = {'update': False}
 	

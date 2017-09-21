@@ -6,11 +6,11 @@ from ..bot import respond_to
 from kanban.models import Project, Stage, Task
 
 @respond_to('create task (.*) in stage (.*)', re.IGNORECASE)
-def create_task(message, task_name, stage_name):
+def create_task(command, task_name, stage_name):
 
 	response = {'update': False}
-	user = message.body['user']
-	project_id = message.body['project_id']
+	user = command.body['user']
+	project_id = command.body['project_id']
 	project = Project.objects.get(id=project_id)
 	stage = Stage.objects.get(project=project, title=stage_name)
 	task, created = Task.objects.get_or_create(title=task_name, 
