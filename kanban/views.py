@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from .models import Project, Stage, Task
 from .forms import TaskForm
@@ -9,6 +10,7 @@ import json
 
 # Create your views here.
 
+@login_required(login_url="/")
 def index(request):
 
 	# load all kanban projects
@@ -16,6 +18,7 @@ def index(request):
 
 	return render(request, 'kanban/index.html', {'projects': all_projects})
 
+@login_required(login_url="/")
 def project_page(request):
 
 	project_id = request.GET.get('id')
@@ -28,6 +31,7 @@ def project_page(request):
 	return render(request, 'kanban/project.html', 
 				  {'project': project, 'stages': stages})
 
+@login_required(login_url="/")
 def task_page(request):
 
 	task_id = request.GET.get('id')
