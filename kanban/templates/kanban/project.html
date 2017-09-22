@@ -32,28 +32,38 @@
   </div>
 
   <div class="row">
-    <div class="kanban-table">
-      <div class="kanban-table-body" id="kanban-table-body">
-      {% for stage in stages %}
-        <div class="col-lg-3 col-sm-6 portfolio-item task-column" id='{{ stage.title }}'>
-          <h4 class="card-title text-center">{{ stage.title }}</h4>
-          {% for task in stage.tasks %}
-            <div class="portfolio-item" id='{{ task.id }}'>
-              <div class="card h-100">
-                <!-- <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <a href="/kanban/task?id={{task.id}}">{{ task.title }}
-                      <small>#{{ task.id }}</small>
-                    </a>
-                  </h5>
-                  <p class="card-text">{{ task.description }}</p>
+    <div class="col-sm-12 container kanban-table">
+      <div class="row">
+        <div class="col-sm-9 kanban-table-body" id="kanban-table-body">
+        {% for stage in stages %}
+          <div class="col-lg-3 col-sm-6 portfolio-item task-column" id='{{ stage.title }}'>
+            <h4 class="card-title text-center">{{ stage.title }}</h4>
+            {% for task in stage.tasks %}
+              <div class="portfolio-item" id='{{ task.id }}'>
+                <div class="card h-100">
+                  <!-- <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a> -->
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="/kanban/task?id={{task.id}}">{{ task.title }}
+                        <small>#{{ task.id }}</small>
+                      </a>
+                    </h5>
+                    <p class="card-text">{{ task.description }}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+        </div>
+        <div class="col-sm-3 kanban-infobar invisible-scrollbar" id="kanban-infobar">
+          <h5 class="kanban-infobar-title" id="kanban-infobar-title"> Activities </h5>
+          {% for log in activities %}
+              <div class="col-sm-12">
+                  <p> {{ log.actor }} {{ log.content }} </p>
+              </div>
           {% endfor %}
         </div>
-      {% endfor %}
       </div>
     </div>
   </div>
@@ -91,11 +101,23 @@ $(function() {
                       stage_title + '">' +
                       '<h4 class="card-title text-center">' + stage_title + '</h4>' + 
                       '</div>');
+                  // add new log
+                  $('#kanban-infobar-title').after(
+                      '<div class="col-sm-12"><p>' +
+                      response.create_stage.log +
+                      '</p></div>'
+                    );
                 }
                 if(response.hasOwnProperty('delete_stage')){
                   // remove stage from kanban without reload
                   var stage_id = "#" + response.delete_stage.stage_title;
                   $(stage_id).remove();
+                  // add new log
+                  $('#kanban-infobar-title').after(
+                      '<div class="col-sm-12"><p>' +
+                      response.delete_stage.log +
+                      '</p></div>'
+                    );
                 }
                 if(response.hasOwnProperty('create_task')){
                   // remove stage from kanban without reload
@@ -110,12 +132,24 @@ $(function() {
                     '<a href="/kanban/task?id=' + task_id +'">' + task_title + 
                     '<small>#' + task_id + '</small></a></h5>' +
                     '<p class="card-text">None</p></div></div></div>');
+                  // add new log
+                  $('#kanban-infobar-title').after(
+                      '<div class="col-sm-12"><p>' +
+                      response.create_task.log +
+                      '</p></div>'
+                    );
 
                 }
                 if(response.hasOwnProperty('delete_task')){
                   // remove stage from kanban without reload
                   var task_id = "#" + response.delete_task.task_id;
                   $(task_id).remove();
+                  // add new log
+                  $('#kanban-infobar-title').after(
+                      '<div class="col-sm-12"><p>' +
+                      response.delete_task.log +
+                      '</p></div>'
+                    );
                 }
             },
             error: function(error) {

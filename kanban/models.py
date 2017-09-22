@@ -3,6 +3,10 @@ from django.conf import settings
 
 import datetime
 
+# Static variables
+
+
+
 # Create your models here.
 
 class Project(models.Model):
@@ -42,3 +46,15 @@ class Task(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class ActivityLog(models.Model):
+	#
+	actor = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+	content = models.TextField(blank=True)
+	date = models.DateTimeField(default=datetime.datetime.now)
+
+	def __str__(self):
+		if self.actor:
+			return ' '.join([str(self.actor.get_username()), str(self.content)])
+		else:
+			return ' '.join(['Ayra', str(content)])

@@ -1,0 +1,13 @@
+
+.invisible-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.kanban-infobar { 
+	overflow: scroll;
+	height: 400px;
+}
+
+.kanban-infobar-title {
+	margin-bottom: 20px;
+}

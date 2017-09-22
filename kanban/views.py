@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-from .models import Project, Stage, Task
+from .models import Project, Stage, Task, ActivityLog
 from .forms import TaskForm
 from .command_bot.bot import Bot
 
@@ -28,8 +28,12 @@ def project_page(request):
 	for stage in stages:
 		stage.tasks = Task.objects.filter(project=stage.project, stage=stage)
 
+	recent_activities = ActivityLog.objects.all().order_by('-date')
+
 	return render(request, 'kanban/project.html', 
-				  {'project': project, 'stages': stages})
+				  {'project': project, 
+				   'stages': stages,
+				   'activities': recent_activities})
 
 @login_required(login_url="/")
 def task_page(request):
