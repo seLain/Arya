@@ -110,8 +110,8 @@ $(function() {
                 }
                 if(response.hasOwnProperty('delete_stage')){
                   // remove stage from kanban without reload
-                  var stage_id = "#" + response.delete_stage.stage_title;
-                  $(stage_id).remove();
+                  var stage_id = response.delete_stage.stage_title;
+                  $("#" + stage_id).remove();
                   // add new log
                   $('#kanban-infobar-title').after(
                       '<div class="col-sm-12"><p>' +
@@ -142,8 +142,8 @@ $(function() {
                 }
                 if(response.hasOwnProperty('delete_task')){
                   // remove stage from kanban without reload
-                  var task_id = "#" + response.delete_task.task_id;
-                  $(task_id).remove();
+                  var task_id = response.delete_task.task_id;
+                  $("#"+task_id).remove();
                   // add new log
                   $('#kanban-infobar-title').after(
                       '<div class="col-sm-12"><p>' +
@@ -153,10 +153,10 @@ $(function() {
                 }
                 if(response.hasOwnProperty('move_task')){
                   // remove stage from kanban without reload
-                  var task_id = "#" + response.move_task.task_id;
+                  var task_id = response.move_task.task_id;
                   var task_title = response.move_task.task_title;
                   var stage_title = response.move_task.stage_title;
-                  $(task_id).remove();
+                  $("#"+task_id).remove();
                   // move task
                   $("#"+stage_title).append(
                     '<div class="portfolio-item" id="' + task_id + '">' + 
