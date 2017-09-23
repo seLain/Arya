@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
-
-import datetime
+from django.utils import timezone
 
 # Static variables
 
@@ -15,7 +14,7 @@ class Project(models.Model):
 	description = models.TextField(blank=True, null=True)
 	membres = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, null=True)
 	#
-	create_date = models.DateTimeField(default=datetime.datetime.now)
+	create_date = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return self.title
@@ -41,8 +40,8 @@ class Task(models.Model):
 	stage = models.ForeignKey(Stage, null=True)
 	# 
 	creator = models.ForeignKey(settings.AUTH_USER_MODEL)
-	create_date = models.DateTimeField(default=datetime.datetime.now)
-	lastupate_date = models.DateTimeField(default=datetime.datetime.now)
+	create_date = models.DateTimeField(default=timezone.now)
+	lastupate_date = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		return self.title
@@ -51,7 +50,7 @@ class ActivityLog(models.Model):
 	#
 	actor = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
 	content = models.TextField(blank=True)
-	date = models.DateTimeField(default=datetime.datetime.now)
+	date = models.DateTimeField(default=timezone.now)
 
 	def __str__(self):
 		if self.actor:
