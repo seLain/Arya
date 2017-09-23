@@ -151,6 +151,28 @@ $(function() {
                       '</p></div>'
                     );
                 }
+                if(response.hasOwnProperty('move_task')){
+                  // remove stage from kanban without reload
+                  var task_id = "#" + response.move_task.task_id;
+                  var task_title = response.move_task.task_title;
+                  var stage_title = response.move_task.stage_title;
+                  $(task_id).remove();
+                  // move task
+                  $("#"+stage_title).append(
+                    '<div class="portfolio-item" id="' + task_id + '">' + 
+                    '<div class="card h-100">' +
+                    '<div class="card-body">' + 
+                    '<h5 class="card-title">' + 
+                    '<a href="/kanban/task?id=' + task_id +'">' + task_title + 
+                    '<small>#' + task_id + '</small></a></h5>' +
+                    '<p class="card-text">None</p></div></div></div>');
+                  // add new log
+                  $('#kanban-infobar-title').after(
+                      '<div class="col-sm-12"><p>' +
+                      response.move_task.log +
+                      '</p></div>'
+                    );
+                }
             },
             error: function(error) {
                 console.log(error);
