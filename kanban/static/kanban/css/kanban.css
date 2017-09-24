@@ -4,10 +4,61 @@
 }
 
 .kanban-infobar { 
-	overflow: scroll;
+	position: absolute;
+    right: 0px;
 	height: 400px;
+	background: rgba(247, 247, 247, 1.0);
+	transition: top 0.1s, right 0.1s, width 0.1s;
 }
 
-.kanban-infobar-title {
+.kanban-infobar .kanban-infobar-tongue {
+    display: block;
+    width: 30px;
+    height: 30px;
+    left: -30px;
+    position: absolute;
+    top: 0px;
+    z-index: 15;
+    background: rgba(247, 247, 247, 1.0);
+    border-bottom-left-radius: 3px;
+    -webkit-box-shadow: -4px 0px 7px -4px #b3b3b3;
+    box-shadow: -4px 0px 7px -4px #b3b3b3;
+    color: #808080;
+    -webkit-transition: left 0.1s;
+    -moz-transition: left 0.1s;
+    -o-transition: left 0.1s;
+    -ms-transition: left 0.1s;
+    transition: left 0.1s;
+}
+
+.kanban-infobar .infobar-shadow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #f7f7f7;
+    -webkit-box-shadow: -10px 0px 5px -10px #b3b3b3;
+    box-shadow: -10px 0px 5px -10px #b3b3b3;
+    z-index: 10;
+}
+
+.kanban-infobar .kanban-infobar-title {
 	margin-bottom: 20px;
+}
+
+.kanban-infobar .kanban-infobar-content {
+    padding: 12px;
+    margin-bottom: 1.6em;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.activities {
+    clear: both;
 }

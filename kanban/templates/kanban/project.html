@@ -10,7 +10,7 @@
 {% block page_content %}
 
 <!-- Page Content -->
-<div class="container">
+<div class="container"">
 
   <!-- Page Heading -->
   <div class="row">
@@ -32,9 +32,29 @@
   </div>
 
   <div class="row">
+    <div class="col-sm-12 container">
+      <div class="col-sm-3 kanban-infobar" id="kanban-infobar">
+        <a class="kanban-infobar-tongue" id="infobar-tongue" href="#"> >> </i></a>
+        <div class="kanban-infobar-shadow">
+          <div class="kanban-infobar-content invisible-scrollbar">
+            <h5 class="kanban-infobar-title" id="kanban-infobar-title"> Activities </h5>
+            <div class="activities">
+              {% for log in activities %}
+                  <div class="col-sm-12">
+                      <p> {{ log.actor }} {{ log.content }} </p>
+                  </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-sm-12 container kanban-table">
       <div class="row">
-        <div class="col-sm-9 kanban-table-body" id="kanban-table-body">
+        <div class="col-sm-12 kanban-table-body" id="kanban-table-body">
         {% for stage in stages %}
           <div class="col-lg-3 col-sm-6 portfolio-item task-column" id='{{ stage.title }}'>
             <h4 class="card-title text-center">{{ stage.title }}</h4>
@@ -56,14 +76,6 @@
           </div>
         {% endfor %}
         </div>
-        <div class="col-sm-3 kanban-infobar invisible-scrollbar" id="kanban-infobar">
-          <h5 class="kanban-infobar-title" id="kanban-infobar-title"> Activities </h5>
-          {% for log in activities %}
-              <div class="col-sm-12">
-                  <p> {{ log.actor }} {{ log.content }} </p>
-              </div>
-          {% endfor %}
-        </div>
       </div>
     </div>
   </div>
@@ -78,6 +90,27 @@
 {% block javascript_content %}
 
 <script>
+
+var sidebar_hidden = false;
+
+$(function() {
+    $('#infobar-tongue').click(function(e) {
+      if(sidebar_hidden){
+        $('#kanban-infobar').animate({
+              right: '0px'
+          }, 300);
+        $('#infobar-tongue').text('>>')
+        sidebar_hidden = false;
+      }else{
+        $('#kanban-infobar').animate({
+              right: '-250px'
+          }, 300);
+        $('#infobar-tongue').text('<<')
+        sidebar_hidden = true;
+      }
+    });
+});
+
 $(function() {
     $('#command-form-btn').click(function(e) {
         e.preventDefault();
