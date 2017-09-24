@@ -25,7 +25,7 @@
 </head>
 
 <body>
-
+  <div class="wrap">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -54,23 +54,27 @@
       </div>
     </nav>
 
-    {% block page_content %}
+    <div class="page-wrap clear-top">
+      {% block page_content %}
 
-    {% endblock %}
+      {% endblock %}
+    </div>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="bg-dark footer">
       <div class="container">
         <p class="m-0 text-center"><a class="text-white" href="https://github.com/seLain/Arya">Arya @ GitHub</a></p>
       </div>
       <!-- /.container -->
     </footer>
 
-    <script src="{% static 'kanban/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'kanban/vendor/popper/popper.min.js' %}"></script>
-    <script src="{% static 'kanban/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
-    {% block javascript_content %}
-    {% endblock %}
+  </div>
+
+  <script src="{% static 'kanban/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'kanban/vendor/popper/popper.min.js' %}"></script>
+  <script src="{% static 'kanban/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  {% block javascript_content %}
+  {% endblock %}
 
 </body>
 </html>
