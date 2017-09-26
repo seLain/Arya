@@ -32,7 +32,9 @@
   <div class="row">
     <div class="col-sm-12 container">
       <div class="kanban-infobar" id="kanban-infobar">
-        <a class="kanban-infobar-tongue" id="infobar-tongue" href="#"> >> </i></a>
+        <a class="kanban-infobar-tongue" id="infobar-tongue" href="#">
+          <i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>
+        </a>
         <div class="kanban-infobar-shadow">
           <div class="kanban-infobar-content invisible-scrollbar">
             <h5 class="kanban-infobar-title" id="kanban-infobar-title"> Activities </h5>
@@ -97,13 +99,15 @@ $(function() {
         $('#kanban-infobar').animate({
               right: '0px'
           }, 300);
-        $('#infobar-tongue').text('>>')
+        $('#infobar-tongue').text('');
+        $('#infobar-tongue').append('<i class="fa fa-angle-double-right fa-2x" aria-hidden="true"></i>')
         sidebar_hidden = false;
       }else{
         $('#kanban-infobar').animate({
               right: '-250px'
           }, 300);
-        $('#infobar-tongue').text('<<')
+        $('#infobar-tongue').text('');
+        $('#infobar-tongue').append('<i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i>')
         sidebar_hidden = true;
       }
     });

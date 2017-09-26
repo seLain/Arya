@@ -47,6 +47,7 @@ html, body {
     top: 0px;
     z-index: 15;
     background: rgba(247, 247, 247, 1.0);
+    text-align: center;
     border-bottom-left-radius: 3px;
     -webkit-box-shadow: -4px 0px 7px -4px #b3b3b3;
     box-shadow: -4px 0px 7px -4px #b3b3b3;
@@ -58,7 +59,7 @@ html, body {
     transition: left 0.1s;
 }
 
-.kanban-infobar .infobar-shadow {
+.kanban-infobar .kanban-infobar-shadow {
     position: absolute;
     top: 0;
     bottom: 0;
