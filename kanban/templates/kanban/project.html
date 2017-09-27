@@ -208,6 +208,23 @@ $(function() {
                       '</p></div>'
                     );
                 }
+                if(response.hasOwnProperty('switch_stages')){
+                  var first_stage_title = response.switch_stages.first_stage_title;
+                  var second_stage_title = response.switch_stages.second_stage_title;
+                  // do switch
+                  var $temp = $("<div>");
+                  var $first_stage = $('#'+first_stage_title)
+                  var $second_stage = $('#'+second_stage_title)
+                  $first_stage.before($temp);
+                  $second_stage.before($first_stage);
+                  $temp.after($second_stage).remove();
+                  // add new log
+                  $('#kanban-infobar-title').after(
+                      '<div class="col-sm-12"><p>' +
+                      response.switch_stages.log +
+                      '</p></div>'
+                    );
+                }
             },
             error: function(error) {
                 console.log(error);
