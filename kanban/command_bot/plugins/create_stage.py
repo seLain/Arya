@@ -13,7 +13,8 @@ def create_stage(command, stage_name):
 	user = command.body['user']
 	project_id = command.body['project_id']
 	project = Project.objects.get(id=project_id)
-	largest_order = Stage.objects.filter(project=project).order_by('-order')[0].order
+	existed_stages = Stage.objects.filter(project=project)
+	largest_order = existed_stages.order_by('-order')[0].order if existed_stages.exists() else 0
 	stage, created = Stage.objects.get_or_create(title=stage_name, 
 												 project=project, 
 												 order=largest_order+1)
