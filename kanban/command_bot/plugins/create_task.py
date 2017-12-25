@@ -2,7 +2,7 @@
 
 import re
 
-from ..bot import respond_to
+from kanban.command_bot.bot import respond_to
 from kanban.models import Project, Stage, Task, ActivityLog
 
 @respond_to('create task (.*) in stage (.*)', re.IGNORECASE)

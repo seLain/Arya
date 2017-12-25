@@ -2,7 +2,7 @@
 
 import re
 
-from ..bot import respond_to
+from kanban.command_bot.bot import respond_to
 from kanban.models import Project, Stage, ActivityLog
 
 @respond_to('delete stage (.*)', re.IGNORECASE)
