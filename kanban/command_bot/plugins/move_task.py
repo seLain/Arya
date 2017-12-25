@@ -19,8 +19,9 @@ def move_task(command, task_id, stage_name):
 		task.stage.project == destination_stage.project:
 		task.stage = destination_stage
 		task.save()
-		log = ActivityLog(actor=user, content=" move task %s to stage %s" % \
-													(task.title, destination_stage.title))
+		log = ActivityLog(actor=user, project=project,
+						  content=" move task %s to stage %s" % \
+						  (task.title, destination_stage.title))
 		log.save()
 		response['update'] = True
 		response['stage_title'] = destination_stage.title

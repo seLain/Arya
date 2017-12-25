@@ -28,7 +28,7 @@ def project_page(request):
 	for stage in stages:
 		stage.tasks = Task.objects.filter(project=stage.project, stage=stage)
 
-	recent_activities = ActivityLog.objects.all().order_by('-date')
+	recent_activities = ActivityLog.objects.filter(project=project).order_by('-date')
 
 	return render(request, 'kanban/project.html', 
 				  {'project': project, 

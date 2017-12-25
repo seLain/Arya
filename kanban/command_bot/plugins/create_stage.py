@@ -18,7 +18,8 @@ def create_stage(command, stage_name):
 												 project=project, 
 												 order=largest_order+1)
 	if created:
-		log = ActivityLog(actor=user, content=" create stage %s" % stage.title)
+		log = ActivityLog(actor=user, project=project, 
+						  content=" create stage %s" % stage.title)
 		log.save()
 		response['update'] = True
 		response['event'] = 'create_stage'

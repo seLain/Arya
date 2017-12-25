@@ -49,6 +49,7 @@ class Task(models.Model):
 class ActivityLog(models.Model):
 	#
 	actor = models.ForeignKey(settings.AUTH_USER_MODEL, null=True)
+	project = models.ForeignKey(Project, null=True)
 	content = models.TextField(blank=True)
 	date = models.DateTimeField(default=timezone.now)
 

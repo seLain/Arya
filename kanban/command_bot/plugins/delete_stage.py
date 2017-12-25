@@ -16,7 +16,8 @@ def delete_stage(command, stage_name):
 	num, dict_del_type_num = Stage.objects.get(title=stage_name, project=project).delete()
 
 	if num > 0:
-		log = ActivityLog(actor=user, content=" delete stage %s" % stage_name)
+		log = ActivityLog(actor=user, project=project, 
+						  content=" delete stage %s" % stage_name)
 		log.save()
 		response['update'] = True
 		response['event'] = 'delete_stage'
