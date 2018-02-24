@@ -27,7 +27,7 @@ def switch_stages(command, first_stage_name, second_stage_name):
 	first_stage.order = temp_second_order
 	first_stage.save()
 
-	log = ActivityLog(actor=user, project=project, 
+	log = ActivityLog(actor=user, project=project, \
 					  content=" switch stage %s and stage %s" % \
 					  (first_stage.title, second_stage.title))
 	log.save()

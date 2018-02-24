@@ -3,7 +3,7 @@
 import re
 
 from kanban.command_bot.bot import respond_to
-from kanban.models import Project, Stage, Task, ActivityLog
+from kanban.models import Stage, Task, ActivityLog
 
 @respond_to('delete task id=#(.*)', re.IGNORECASE)
 def delete_task(command, task_id):
@@ -18,7 +18,7 @@ def delete_task(command, task_id):
 	num, dict_del_type_num = Task.objects.get(id=task_id).delete()
 
 	if num > 0:
-		log = ActivityLog(actor=user, project=project, 
+		log = ActivityLog(actor=user, project=project, \
 						  content=" delete task %s" % task_title)
 		log.save()
 		response['update'] = True

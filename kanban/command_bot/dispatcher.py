@@ -2,7 +2,7 @@
 
 from __future__ import absolute_import
 
-import importlib, traceback, logging, json, re
+import traceback, logging, json, re
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +16,6 @@ class CommandDispatcher(object):
     def dispatch_cmd(self, cmd):
         category = 'respond_to'
         text = cmd['text']
-        responded = False
         responses = {}
 
         for func, args in self._plugins.get_plugins(category, text):

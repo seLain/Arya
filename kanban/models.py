@@ -32,13 +32,11 @@ class Stage(models.Model):
 		return self.title
 
 class Task(models.Model):
-	# 
 	title = models.CharField(max_length=128)
 	description = models.TextField(blank=True, null=True)
 	time_effort = models.PositiveSmallIntegerField(default=0)
 	project = models.ForeignKey(Project, null=True)
 	stage = models.ForeignKey(Stage, null=True)
-	# 
 	creator = models.ForeignKey(settings.AUTH_USER_MODEL)
 	create_date = models.DateTimeField(default=timezone.now)
 	lastupate_date = models.DateTimeField(default=timezone.now)

@@ -30,9 +30,9 @@ def project_page(request):
 
 	recent_activities = ActivityLog.objects.filter(project=project).order_by('-date')
 
-	return render(request, 'kanban/project.html', 
-				  {'project': project, 
-				   'stages': stages,
+	return render(request, 'kanban/project.html', \
+				  {'project': project, \
+				   'stages': stages, \
 				   'activities': recent_activities})
 
 @login_required(login_url="/")
