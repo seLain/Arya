@@ -3,7 +3,7 @@
 import re
 
 from kanban.command_bot.bot import respond_to
-from kanban.models import Stage, Task, ActivityLog
+from kanban.models import Task, ActivityLog
 
 @respond_to('delete task id=#(.*)', re.IGNORECASE)
 def delete_task(command, task_id):

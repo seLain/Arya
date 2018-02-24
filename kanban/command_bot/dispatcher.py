@@ -20,7 +20,6 @@ class CommandDispatcher(object):
 
         for func, args in self._plugins.get_plugins(category, text):
             if func:
-                responded = True
                 try:
                     response = func(Command(cmd), *args)
                     responses[func.__name__] = response

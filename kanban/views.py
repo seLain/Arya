@@ -12,10 +12,8 @@ import json
 
 @login_required(login_url="/")
 def index(request):
-
 	# load all kanban projects
 	all_projects = Project.objects.all()
-
 	return render(request, 'kanban/index.html', {'projects': all_projects})
 
 @login_required(login_url="/")
