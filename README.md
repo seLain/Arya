@@ -1,4 +1,7 @@
 # Arya
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b5d7d584dfa14f9b82fded7a3f626631)](https://app.codacy.com/app/seLain/Arya?utm_source=github.com&utm_medium=referral&utm_content=seLain/Arya&utm_campaign=badger)
+
 Development of an experimental kanban system
 
 ## Run
