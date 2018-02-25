@@ -55,4 +55,4 @@ class ActivityLog(models.Model):
 		if self.actor:
 			return ' '.join([str(self.actor.get_username()), str(self.content)])
 		else:
-			return ' '.join(['Ayra', str(content)])
+			return ' '.join(['Ayra', str(self.content)])

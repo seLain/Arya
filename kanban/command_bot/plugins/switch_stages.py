@@ -28,8 +28,8 @@ def switch_stages(command, first_stage_name, second_stage_name):
 	first_stage.save()
 
 	log = ActivityLog(actor=user, project=project, \
-					  content=" switch stage %s and stage %s" % \
-					  (first_stage.title, second_stage.title))
+					content=" switch stage %s and stage %s" % \
+					(first_stage.title, second_stage.title))
 	log.save()
 	response['update'] = True
 	response['event'] = 'switch_stage'

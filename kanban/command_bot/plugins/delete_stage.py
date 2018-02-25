@@ -17,7 +17,7 @@ def delete_stage(command, stage_name):
 
 	if num > 0:
 		log = ActivityLog(actor=user, project=project, \
-						  content=" delete stage %s" % stage_name)
+						content=" delete stage %s" % stage_name)
 		log.save()
 		response['update'] = True
 		response['event'] = 'delete_stage'

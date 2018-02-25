@@ -20,8 +20,8 @@ def create_task(command, task_name, stage_name):
 											   creator=user)
 	if created:
 		log = ActivityLog(actor=user, project=project, \
-						  content=" create task %s in stage %s" % \
-						  (task.title, stage.title))
+						content=" create task %s in stage %s" % \
+						(task.title, stage.title))
 		log.save()
 		response['update'] = True
 		response['stage_title'] = stage.title

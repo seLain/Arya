@@ -2,11 +2,13 @@
 
 from __future__ import absolute_import
 
-import imp, importlib, os, re
+import imp, importlib, os, re, logging
 from glob import glob
 
 from . import settings
 from .dispatcher import CommandDispatcher
+
+logger = logging.getLogger(__name__)
 
 class Bot(object):
     def __init__(self):

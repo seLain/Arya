@@ -19,7 +19,7 @@ def delete_task(command, task_id):
 
 	if num > 0:
 		log = ActivityLog(actor=user, project=project, \
-						  content=" delete task %s" % task_title)
+						content=" delete task %s" % task_title)
 		log.save()
 		response['update'] = True
 		response['event'] = 'delete_task'
