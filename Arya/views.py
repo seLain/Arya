@@ -24,7 +24,7 @@ def login(request):
         return True
     else:
         if username != "" or password !="":
-          return False
+            return False
 
 def logout(request):
     auth.logout(request)

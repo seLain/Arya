@@ -15,9 +15,9 @@ def create_task(command, task_name, stage_name):
 	project = Project.objects.get(id=project_id)
 	stage = Stage.objects.get(project=project, title=stage_name)
 	task, created = Task.objects.get_or_create(title=task_name, \
-											   project=project, \
-											   stage=stage, \
-											   creator=user)
+											project=project, \
+											stage=stage, \
+											creator=user)
 	if created:
 		log = ActivityLog(actor=user, project=project, \
 						content=" create task %s in stage %s" % \

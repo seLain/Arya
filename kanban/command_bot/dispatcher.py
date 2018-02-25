@@ -2,7 +2,7 @@
 
 from __future__ import absolute_import
 
-import traceback, logging, json, re
+import traceback, logging, re
 
 logger = logging.getLogger(__name__)
 

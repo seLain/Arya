@@ -26,7 +26,7 @@ class Stage(models.Model):
 	order = models.PositiveSmallIntegerField(default=0)
 
 	class Meta:
-		 unique_together = (('project', 'title'), ('project', 'order'), )
+		unique_together = (('project', 'title'), ('project', 'order'), )
 
 	def __str__(self):
 		return self.title
