@@ -1,0 +1,9 @@
+{
+  "kanban/tests/unit_tests/test_pluginmanager.py::PluginManagerTest::test_get_plugins": true,
+  "kanban/tests/unit_tests/test_pluginmanager.py::PluginManagerTest::test_load_init_plugins": true,
+  "kanban/tests/unit_tests/test_pluginmanager.py::PluginManagerTest::test_load_local_plugins": true,
+  "kanban/tests/unit_tests/test_pluginmanager.py::PluginManagerTest::test_load_single_plugin": true,
+  "kanban/tests/unit_tests/test_pluginmanager.py::test_get_plugins": true,
+  "kanban/tests/unit_tests/test_pluginmanager.py::test_load_local_plugins": true,
+  "kanban/tests/unit_tests/test_pluginmanager.py::test_load_single_plugin": true
+}

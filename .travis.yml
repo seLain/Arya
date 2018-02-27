@@ -9,5 +9,4 @@ env:
   - DJANGO=1.11.5
 # command to run tests
 script:
-  - pytest # python unit test
-  - python manage.py test # Django test
+  - python manage.py test # Django test, including unit and API test
