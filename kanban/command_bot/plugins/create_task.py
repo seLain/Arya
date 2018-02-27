@@ -24,6 +24,7 @@ def create_task(command, task_name, stage_name):
 						(task.title, stage.title))
 		log.save()
 		response['update'] = True
+		response['event'] = 'create_task'
 		response['stage_title'] = stage.title
 		response['task_title'] = task.title
 		response['task_id'] = task.id

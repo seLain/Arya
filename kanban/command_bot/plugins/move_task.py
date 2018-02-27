@@ -24,6 +24,7 @@ def move_task(command, task_id, stage_name):
 						(task.title, destination_stage.title))
 		log.save()
 		response['update'] = True
+		response['event'] = 'move_task'
 		response['stage_title'] = destination_stage.title
 		response['task_title'] = task.title
 		response['task_id'] = task.id

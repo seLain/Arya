@@ -32,7 +32,7 @@ def switch_stages(command, first_stage_name, second_stage_name):
 					(first_stage.title, second_stage.title))
 	log.save()
 	response['update'] = True
-	response['event'] = 'switch_stage'
+	response['event'] = 'switch_stages'
 	response['first_stage_title'] = first_stage.title
 	response['second_stage_title'] = second_stage.title
 	response['log'] = str(log)
