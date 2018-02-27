@@ -11,7 +11,8 @@ env:
   - DJANGO=1.11.5
 # command to run tests
 script:
-  - coverage run manage.py test # Django test, including unit and API test
+  # Django test, including unit and API test. exclude site-packges and other.
+  - coverage run --source . manage.py test
 after_success:
   - coverage report
   - coveralls
