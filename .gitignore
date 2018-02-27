@@ -7,3 +7,4 @@ build
 .build
 *.db
 *.sqlite3
+.pytest
