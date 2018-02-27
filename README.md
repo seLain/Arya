@@ -1,7 +1,8 @@
-[![Codacy](https://api.codacy.com/project/badge/Grade/b5d7d584dfa14f9b82fded7a3f626631)](https://app.codacy.com/app/seLain/Arya?utm_source=github.com&utm_medium=referral&utm_content=seLain/Arya&utm_campaign=badger)
-[![Code Health](https://landscape.io/github/seLain/Arya/master/landscape.svg?style=flat)](https://landscape.io/github/seLain/Arya/master)
 [![Python Support](https://img.shields.io/badge/python-3.4-blue.svg)]()
 [![Build](https://travis-ci.org/seLain/Arya.svg?branch=master)]()
+[![Coverage Status](https://coveralls.io/repos/github/seLain/Arya/badge.svg)](https://coveralls.io/github/seLain/Arya)
+[![Codacy](https://api.codacy.com/project/badge/Grade/b5d7d584dfa14f9b82fded7a3f626631)](https://app.codacy.com/app/seLain/Arya?utm_source=github.com&utm_medium=referral&utm_content=seLain/Arya&utm_campaign=badger)
+[![Code Health](https://landscape.io/github/seLain/Arya/master/landscape.svg?style=flat)](https://landscape.io/github/seLain/Arya/master)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
 Development of an experimental kanban system

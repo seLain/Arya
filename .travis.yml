@@ -4,9 +4,14 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
+  - pip install coverage
+  - pip install coveralls
 # environment setting
 env:
   - DJANGO=1.11.5
 # command to run tests
 script:
-  - python manage.py test # Django test, including unit and API test
+  - coverage run manage.py test # Django test, including unit and API test
+after_success:
+  - coverage report
+  - coveralls
